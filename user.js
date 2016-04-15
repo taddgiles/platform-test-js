@@ -11,7 +11,7 @@ var schema = mongoose.Schema({
     lowercase: true,
     trim: true
   },
-  passwordDigest: {
+  password_digest: {
     type: String
   }
 },
@@ -21,7 +21,7 @@ var schema = mongoose.Schema({
   toJSON: {
     transform: (doc, obj) => {
       delete obj._id
-      delete obj.passwordDigest
+      delete obj.password_digest
       obj.id = doc._id
     }
   }
@@ -32,12 +32,12 @@ schema.virtual('password').set(function(newPassword) {
 })
 
 schema.methods.validatePassword = function(inputPassword) {
-  return bcrypt.compareSync(inputPassword, this.passwordDigest)
+  return bcrypt.compareSync(inputPassword, this.password_digest)
 }
 
 schema.pre('validate', function(next) {
   if (this.newPassword) {
-    this.passwordDigest = bcrypt.hashSync(this.newPassword, 10)
+    this.password_digest = bcrypt.hashSync(this.newPassword, 10)
   }
   return next()
 })
