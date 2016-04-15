@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var User = require('./user')
 var bcrypt = require('bcrypt')
 var jwt = require('jwt-simple')
-var secret = process.env.SECRET || 'secret'
+var secret = process.env.JWT_SECRET || 'secret'
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/platform-test')
 
