@@ -44,7 +44,7 @@ router.route('/authenticate')
       if (!user) return res.status(404).json()
 
       console.log('USER', user)
-      if (!bcrypt.compareSync(req.body.password, user.passwordDigest)) {
+      if (!bcrypt.compareSync(req.body.password, user.password_digest)) {
         return res.status(401).json({ message: 'Invalid password' })
       }
 
