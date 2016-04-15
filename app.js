@@ -42,6 +42,8 @@ router.route('/authenticate')
     User.findOne({ email: req.body.email }, (err, user) => {
       if (err) return res.json(err)
       if (!user) return res.status(404).json()
+
+      console.log('USER', user)
       if (!bcrypt.compareSync(req.body.password, user.passwordDigest)) {
         return res.status(401).json({ message: 'Invalid password' })
       }
