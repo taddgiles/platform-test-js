@@ -87,6 +87,10 @@ router.route('/:id')
 
 app.use('/api/v1/users', router)
 
+app.use('/loaderio-75e286c322995445a7696c747b3a7d4e.txt', (req, res) => {
+  res.send('loaderio-75e286c322995445a7696c747b3a7d4e')
+})
+
 var PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log(`Listening on ${PORT}`)
