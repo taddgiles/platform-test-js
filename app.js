@@ -23,7 +23,7 @@ router.use((req, res, next) => {
   if (!token) return res.status(401).json()
 
   try {
-    var userId = jwt.decode(token, secret).userId
+    var userId = jwt.decode(token, secret).user_id
   } catch (ex) {
     return res.status(401).json(ex.message)
   }
@@ -48,7 +48,7 @@ router.route('/authenticate')
         return res.status(401).json({ message: 'Invalid password' })
       }
 
-      var payload = { userId: user._id }
+      var payload = { user_id: user._id }
       res.json({ authToken: jwt.encode(payload, secret) })
     })
   })
