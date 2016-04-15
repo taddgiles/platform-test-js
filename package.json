@@ -1,0 +1,23 @@
+{
+  "name": "platform-test-js",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start_dev": "WEB_CONCURRENCY=1 nodemon index.js"
+  },
+  "engines": {
+    "node": "4.4.3",
+    "npm": "3.8.6"
+  },
+  "dependencies": {
+    "bcrypt": "0.8.5",
+    "body-parser": "1.15.0",
+    "express": "4.13.4",
+    "jwt-simple": "0.5.0",
+    "mongoose": "4.4.12",
+    "nodemon": "1.9.1",
+    "throng": "4.0.0"
+  }
+}
