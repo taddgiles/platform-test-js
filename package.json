@@ -8,8 +8,7 @@
     "start_dev": "WEB_CONCURRENCY=1 nodemon index.js"
   },
   "engines": {
-    "node": "4.4.3",
-    "npm": "3.8.6"
+    "node": "4.4.3"
   },
   "dependencies": {
     "bcrypt": "0.8.5",
