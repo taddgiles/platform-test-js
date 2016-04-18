@@ -17,6 +17,7 @@
     "jwt-simple": "0.5.0",
     "mongoose": "4.4.12",
     "nodemon": "1.9.1",
+    "request-context": "0.1.6",
     "throng": "4.0.0"
   }
 }
