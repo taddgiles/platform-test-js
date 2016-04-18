@@ -5,7 +5,6 @@ var User = require('./user')
 var bcrypt = require('bcrypt')
 var jwt = require('jwt-simple')
 var secret = process.env.JWT_SECRET || 'secret'
-var contextService = require('request-context')
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/platform-test')
 
@@ -13,18 +12,9 @@ var app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-app.use(contextService.middleware('request'))
-
 var router = express.Router()
 
 router.use((req, res, next) => {
-  contextService.set('request:foo', 'bar')
-  next()
-})
-
-router.use((req, res, next) => {
-  var foo = contextService.get('request:foo')
-
   if (req.originalUrl.match(/authenticate$/)) return next()
 
   var header = req.get('Authorization') || ''
