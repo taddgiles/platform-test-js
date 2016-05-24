@@ -34,7 +34,6 @@ router.use((req, res, next) => {
     if (rows.length === 0) {
       return res.status(401).json()
     }
-    console.log(rows[0])
     delete rows[0].password_digest
     req.user = rows[0]
     next()
