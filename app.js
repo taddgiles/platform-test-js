@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 var jwt = require('jwt-simple')
 var secret = process.env.JWT_SECRET || 'secret'
 
-var pg = require('knex')({
+var knex = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL || "postgres://localhost/platform_test_development",
   searchPath: 'knex,public'
@@ -27,7 +27,7 @@ router.use((req, res, next) => {
     return res.status(401).json(ex.message)
   }
 
-  pg('users').where({
+  knex('users').where({
     id: userId
   })
   .then((rows) => {
