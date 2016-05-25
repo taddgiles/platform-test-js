@@ -9,7 +9,7 @@ var knex = require('knex')({
   searchPath: 'knex,public',
   pool: {
     min: 0,
-    max: 20
+    max: 1
   }
 })
 
