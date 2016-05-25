@@ -6,7 +6,11 @@ var secret = process.env.JWT_SECRET || 'secret'
 var knex = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL || "postgres://localhost/platform_test_development",
-  searchPath: 'knex,public'
+  searchPath: 'knex,public',
+  pool: {
+    min: 0,
+    max: 20
+  }
 })
 
 var app = express()
